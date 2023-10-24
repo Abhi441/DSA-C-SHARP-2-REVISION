@@ -1,0 +1,37 @@
+Youtube vidio : https://www.youtube.com/watch?v=MLfAFCkzChU
+
+
+using System;
+using System.Text;
+using System.Collections.Generic;
+
+public class Solution {
+    public string RemoveOuterParentheses(string s) {
+        Stack<char> st = new Stack<char>();
+        
+        StringBuilder sb = new StringBuilder();
+
+        for(int i = 0 ; i < s.Length ; i++)
+        {
+            char ch = s[i];
+
+            if(ch == '(')
+            {
+                if(st.Count > 0 )
+                {
+                    sb.Append(ch);
+                }
+                st.Push(ch);
+            }
+            else
+            {
+                st.Pop();
+                if(st.Count > 0)
+                {
+                    sb.Append(ch);
+                }
+            }
+        }
+        return sb.ToString();
+    }
+}
